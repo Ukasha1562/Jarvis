@@ -72,7 +72,7 @@ function canvasApp() {
 		numToAddEachFrame = 8;
 
 		//particle color
-		r = 255;
+		r = 138;
 		g = 0;
 		b = 0;
 

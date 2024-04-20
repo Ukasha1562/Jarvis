@@ -28,6 +28,9 @@
 </head>
 
 <body>
+
+  <div class="container">
+
   <section id="shape" class="mb-4">
     <div class="row">
       <div class="col-md-1"></div>
@@ -46,10 +49,14 @@
         </div>
         <h5 class="text text-light text-center">Ask me anything</h5>
 
-        <div class="col-md-12">
+        <div class="col-md-12 mt-4 pt-4">
           <div class="text-center">
-            <div id="TextInput" class="d-flex">
-              <input type="text" name="chatbox" id="chatbox" placeholder="type here ...">
+            <div id="input" class="d-flex">
+              <input type="text" class="input-box" name="chatbox" id="chatbox" placeholder="Ask Jarvis...">
+              <button id="mic" class="glow-on-hover"><i class="bi bi-mic"></i></button>
+              <button id="chat" class="glow-on-hover"><i class="bi bi-chat-dots"></i></button>
+              <button id="setting" class="glow-on-hover"><i class="bi bi-gear"></i></button>
+
             </div>
           </div>
         </div>
@@ -58,7 +65,29 @@
       <div class="col-md-1"></div>
     </div>
   </section>
-  
+
+  <section id="wave" class="mb-4" hidden>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+            <div class="">
+              <p class="text-start text-light mb-4 prompt">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+              <div id="siri-container"></div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -74,6 +103,9 @@
   <script src="resources/vendores/texllate/jquery.fittext.js"></script>
   <script src="resources/vendores/texllate/jquery.lettering.js"></script>
   <script src="http://jschr.github.io/textillate/jquery.textillate.js"></script>
+
+  <!-- Siri Wave -->
+  <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
 
   <!-- JS -->
   <script src="main.js"></script>
