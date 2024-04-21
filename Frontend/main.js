@@ -35,6 +35,14 @@ $(document).ready(function () {
     },
   });
 
+  // Mic click
+  $('#mic').click(function () { 
+    eel.start_sound()
+    $('#shape').attr('hidden', true);
+    $('#wave').attr('hidden', false);
+    
+  });
+
 
 
 });
