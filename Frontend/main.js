@@ -40,7 +40,7 @@ $(document).ready(function () {
     eel.start_sound()
     $('#shape').attr('hidden', true);
     $('#wave').attr('hidden', false);
-    
+    eel.speak_converter()
   });
 
 
