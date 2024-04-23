@@ -11,7 +11,7 @@ $(document).ready(function () {
     },
   });
 
-// wave animation
+// wave initilizer
   var siriWave = new SiriWave({
     container: document.getElementById("siri-container"),
     width: 800,
@@ -40,7 +40,7 @@ $(document).ready(function () {
     eel.start_sound()
     $('#shape').attr('hidden', true);
     $('#wave').attr('hidden', false);
-    eel.speak_converter()
+    eel.AllPrompts()
   });
 
 
