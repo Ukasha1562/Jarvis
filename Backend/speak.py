@@ -50,7 +50,7 @@ def AllPrompts():
     from Backend.features import openyt
     openyt(query)
   else:
-    print("sorry for your request!") 
+    talk("sorry for your request!") 
   
   eel.ShowShape()
 
