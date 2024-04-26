@@ -6,11 +6,11 @@ from Backend.features import *
 from Backend.speak import *
 
 
+def start():
+  eel.init("Frontend")
+  start_sound()
 
-eel.init("Frontend")
-start_sound()
-
-os.system('start msedge.exe --app="http://localhost:8000/index.html"')
-eel.start('index.html',mode=None,host='localhost',block=True)
+  os.system('start msedge.exe --app="http://localhost:8000/index.html"')
+  eel.start('index.html',mode=None,host='localhost',block=True)
 
 

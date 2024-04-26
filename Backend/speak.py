@@ -40,17 +40,20 @@ def speak_converter():
 @eel.expose
 # For all prompts:
 def AllPrompts():
-  query=speak_converter()
-  print(query)
-  
-  if "open" in query:
-    from Backend.features import openCommand
-    openCommand(query)
-  elif "on youtube" in query:
-    from Backend.features import openyt
-    openyt(query)
-  else:
-    talk("sorry for your request!") 
+  try:
+    query=speak_converter()
+    print(query)
+    
+    if "open" in query:
+      from Backend.features import openCommand
+      openCommand(query)
+    elif "on youtube" in query:
+      from Backend.features import openyt
+      openyt(query)
+    else:
+      talk("sorry for your request!") 
+  except:
+    print("error!")
   
   eel.ShowShape()
 

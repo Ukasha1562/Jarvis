@@ -44,5 +44,17 @@ $(document).ready(function () {
   });
 
 
+  // hot-word key press
+  function hot_key(e){
+    if (e.key=='j' && e.metaKey){
+      eel.start_sound()
+      $('#shape').attr('hidden', true);
+      $('#wave').attr('hidden', false);
+      eel.AllPrompts()
+    }
+  }
+  document.addEventListener('keyup',hot_key,false)
+
+
 
 });
