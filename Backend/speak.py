@@ -47,9 +47,26 @@ def AllPrompts():
     if "open" in query:
       from Backend.features import openCommand
       openCommand(query)
+
     elif "on youtube" in query:
       from Backend.features import openyt
       openyt(query)
+
+    elif "send message" in query or "audio call" in query or "voice call" in query or "video call" in query:
+      from Backend.features import findnumber,whatsapp
+      flag=""
+      contact,name=findnumber(query)
+      if(contact!=0):
+        if "send message" in query:
+          flag='message'
+          talk('what message to send')
+          query=speak_converter()
+        elif "audio call" in query or "voice call" in query:
+          flag='call'
+        else:
+          flag='video call'
+        
+        whatsapp(contact,query,flag,name)
     else:
       talk("sorry for your request!") 
   except:

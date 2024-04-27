@@ -1,5 +1,5 @@
 import sqlite3
-
+import csv
 con=sqlite3.connect("apps.db")
 cur=con.cursor()
 
@@ -27,3 +27,22 @@ cur=con.cursor()
 # cur.execute("INSERT INTO websites VALUES(null, 'erp', 'https://erp.superior.edu.pk')")
 # cur.execute("INSERT INTO websites VALUES(null, 'youtube', 'https://www.youtube.com')")
 # con.commit()
+
+
+# for contacts
+
+# table
+#cur.execute("CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY, name VARCHAR(200), number VARCHAR(255))")
+
+# insert contacts extracted from csv file
+# desired_indexes=[0,30]
+# with open('contacts.csv','r',encoding='utf-8') as csvfile:
+#   csvreader=csv.reader(csvfile)
+#   for row in csvreader:
+#     data=[row[i] for i in desired_indexes]
+#     cur.execute("INSERT INTO contacts VALUES(null,?,?);",tuple(data))
+
+# con.commit()
+# con.close()
+
+

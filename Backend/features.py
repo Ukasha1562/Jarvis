@@ -10,8 +10,11 @@ import pvporcupine
 import pyaudio
 import struct
 import time
+import subprocess
 import pyautogui as autogui
+from pipes import quote
 from Backend.helper import extract_from_search
+from Backend.helper import remove_words
 # databse connectivity
 con= sqlite3.connect("apps.db")
 cur=con.cursor()
@@ -99,4 +102,55 @@ def hotword():
       audio_stream.close()
     if paud is not None:
       paud.terminate()
+  
+
+# whatsapp contact finding
+def findnumber(query):
+  extra_words=['make','a','phone','call','to','send','message','whatsapp','on','do','voice', 'text','video','an','audio','jarvis']
+  query=remove_words(query,extra_words)
+
+  try:
+    query=query.strip().lower()
+    cur.execute("SELECT number FROM contacts WHERE LOWER(name)=?",(query,))
+    results=cur.fetchall()
+    print(results[0][0])
+    number_str=str(results[0][0])
+    return number_str,query
+  except:
+    talk("Not exists in contacts!")
+    return 0,0
+
+
+# for whatsapp features
+def whatsapp(number,message,flag,name):
+  if flag=='message':
+    target_tab=12
+    jarvis_message="message sent successfully to "+name
+  
+  elif flag=='call':
+    target_tab=7
+    message=''
+    jarvis_message="calling to "+name
     
+  else:
+    target_tab=6
+    message=''
+    jarvis_message="starting video call with "+name
+
+  # message for adding in url with no spaces
+  new_message=quote(message)
+  # making url
+  whatsapp_url=f"whatsapp://send?phone={number}&text={new_message}"
+  # command for running url
+  full_command=f'start "" "{whatsapp_url}"'
+
+  subprocess.run(full_command,shell=True)
+  time.sleep(5)
+  subprocess.run(full_command,shell=True)
+
+  pyautogui.hotkey('ctrl','f')
+  for i in range(1,target_tab):
+    pyautogui.hotkey('tab')
+  
+  pyautogui.hotkey('enter')
+  talk(jarvis_message)
