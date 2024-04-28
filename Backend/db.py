@@ -45,4 +45,5 @@ cur=con.cursor()
 # con.commit()
 # con.close()
 
-
+# cur.execute('UPDATE contacts SET number="+44 7944 593315" WHERE id=18')
+# con.commit()

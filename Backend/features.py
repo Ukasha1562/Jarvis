@@ -128,12 +128,12 @@ def whatsapp(number,message,flag,name):
     jarvis_message="message sent successfully to "+name
   
   elif flag=='call':
-    target_tab=7
-    message=''
+    target_tab=6
+    message=null
     jarvis_message="calling to "+name
     
   else:
-    target_tab=6
+    target_tab=5
     message=''
     jarvis_message="starting video call with "+name
 
@@ -148,9 +148,9 @@ def whatsapp(number,message,flag,name):
   time.sleep(5)
   subprocess.run(full_command,shell=True)
 
-  pyautogui.hotkey('ctrl','f')
-  for i in range(1,target_tab):
-    pyautogui.hotkey('tab')
+  autogui.hotkey('ctrl','f')
+  for i in range(0,target_tab):
+    autogui.hotkey('tab')
   
-  pyautogui.hotkey('enter')
+  autogui.hotkey('enter')
   talk(jarvis_message)
