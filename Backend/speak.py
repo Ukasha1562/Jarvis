@@ -39,11 +39,16 @@ def speak_converter():
 
 @eel.expose
 # For all prompts:
-def AllPrompts():
-  try:
+def AllPrompts(message=1):
+
+  if message==1:
     query=speak_converter()
     print(query)
-    
+  else:
+    query=message
+
+  try:
+
     if "open" in query:
       from Backend.features import openCommand
       openCommand(query)

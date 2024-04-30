@@ -56,5 +56,54 @@ $(document).ready(function () {
   document.addEventListener('keyup',hot_key,false)
 
 
+  // for chatting with text
+  function text_input(message){
+    if (message!=""){
+      $('#shape').attr('hidden', true);
+      $('#wave').attr('hidden', false);
+      eel.AllPrompts(message);
+      $("#chatbox").val("")
+      $('#mic').attr('hidden', false);
+      $('#send').attr('hidden', true);
+    }
+  }
+
+
+  // for showing or hiding send button
+  function send_button(message){
+    if(message.length==0){
+      $('#mic').attr('hidden', false);
+      $('#send').attr('hidden', true);
+    }
+    else{
+      $('#mic').attr('hidden', true);
+      $('#send').attr('hidden', false);
+    }
+  }
+
+
+  // for showing and hiding mic button and send button after clicking chatbox
+  $('#chatbox').keyup(function () {
+    let message=$('#chatbox').val();
+    send_button(message) 
+  });
+
+
+  // for functions after clicking send button
+  $('#send').click(function () { 
+    let message=$('#chatbox').val();
+    text_input(message)
+  });
+
+
+  // for same like above functions but with enter key
+  $('#chatbox').keypress(function (e) {
+    key=e.which;
+    if(key==13){
+      let message=$('#chatbox').val();
+      text_input(message)
+    }
+  });
+
 
 });
