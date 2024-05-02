@@ -14,6 +14,32 @@ $(document).ready(function () {
     $("#wave").attr("hidden",true);
   }
 
+  // for sender history
+  eel.expose(sender)
+  function sender(message) {
+    var chatbox= document.getElementById("chat-canvas-body")
+    if (message.trim()!=""){
+      chatbox.innerHTML+= `<div class="row justify-content-end mb-4">
+      <div class="width-size">
+      <div class="sender_message">${message}</div>
+      </div>`;
 
+      chatbox.scrollTop= chatbox.scrollHeight;
+    }
+  }
+
+  // for receiver history
+  eel.expose(receiver)
+  function receiver(message) {
+    var chatbox= document.getElementById("chat-canvas-body")
+    if (message.trim()!=""){
+      chatbox.innerHTML+= `<div class="row justify-content-start mb-4">
+      <div class="width-size">
+      <div class="receiver_message">${message}</div>
+      </div>`;
+
+      chatbox.scrollTop= chatbox.scrollHeight;
+    }
+  }
 
 });

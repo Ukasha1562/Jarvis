@@ -10,6 +10,7 @@ def talk(prompt):
   engine.setProperty('rate',174)
   eel.DisplayMessage(prompt)
   engine.say(prompt)
+  eel.receiver(prompt)
   engine.runAndWait()
 
 
@@ -44,8 +45,10 @@ def AllPrompts(message=1):
   if message==1:
     query=speak_converter()
     print(query)
+    eel.sender(query)
   else:
     query=message
+    eel.sender(query)
 
   try:
 
